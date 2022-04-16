@@ -8,7 +8,7 @@ import com.eu.habbo.messages.incoming.MessageHandler;
 import com.eu.habbo.messages.outgoing.generic.alerts.BubbleAlertComposer;
 import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumCommentsComposer;
 import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumDataComposer;
-import com.eu.habbo.messages.outgoing.handshake.ConnectionErrorComposer;
+import com.eu.habbo.messages.outgoing.handshake.ErrorReportComposer;
 
 public class GuildForumThreadsMessagesEvent extends MessageHandler {
     @Override
@@ -22,7 +22,7 @@ public class GuildForumThreadsMessagesEvent extends MessageHandler {
         ForumThread thread = ForumThread.getById(threadId);
 
         if (guild == null || thread == null) {
-            this.client.sendResponse(new ConnectionErrorComposer(404));
+            this.client.sendResponse(new ErrorReportComposer(404));
             return;
         }
 

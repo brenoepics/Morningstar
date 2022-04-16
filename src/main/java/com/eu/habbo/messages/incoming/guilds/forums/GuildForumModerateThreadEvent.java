@@ -12,7 +12,7 @@ import com.eu.habbo.messages.outgoing.generic.alerts.BubbleAlertComposer;
 import com.eu.habbo.messages.outgoing.generic.alerts.BubbleAlertKeys;
 import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumThreadMessagesComposer;
 import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumThreadsComposer;
-import com.eu.habbo.messages.outgoing.handshake.ConnectionErrorComposer;
+import com.eu.habbo.messages.outgoing.handshake.ErrorReportComposer;
 
 
 public class GuildForumModerateThreadEvent extends MessageHandler {
@@ -26,7 +26,7 @@ public class GuildForumModerateThreadEvent extends MessageHandler {
         ForumThread thread = ForumThread.getById(threadId);
 
         if (guild == null || thread == null) {
-            this.client.sendResponse(new ConnectionErrorComposer(404));
+            this.client.sendResponse(new ErrorReportComposer(404));
             return;
         }
 
@@ -34,19 +34,19 @@ public class GuildForumModerateThreadEvent extends MessageHandler {
 
         GuildMember member = Emulator.getGameEnvironment().getGuildManager().getGuildMember(guildId, this.client.getHabbo().getHabboInfo().getId());
         if (member == null) {
-            this.client.sendResponse(new ConnectionErrorComposer(401));
+            this.client.sendResponse(new ErrorReportComposer(401));
             return;
         }
 
         boolean isAdmin = (guild.getOwnerId() == this.client.getHabbo().getHabboInfo().getId() || member.getRank().type < GuildRank.MEMBER.type);
 
         if (!isAdmin && !isStaff) {
-            this.client.sendResponse(new ConnectionErrorComposer(403));
+            this.client.sendResponse(new ErrorReportComposer(403));
             return;
         }
 
         if (state == ForumThreadState.HIDDEN_BY_STAFF.getStateId() && !isStaff) {
-            this.client.sendResponse(new ConnectionErrorComposer(403));
+            this.client.sendResponse(new ErrorReportComposer(403));
             return;
         }
 
