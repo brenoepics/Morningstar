@@ -7,7 +7,7 @@ import com.eu.habbo.habbohotel.guilds.forums.ForumThreadState;
 import com.eu.habbo.messages.incoming.MessageHandler;
 import com.eu.habbo.messages.outgoing.generic.alerts.BubbleAlertComposer;
 import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumCommentsComposer;
-import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumDataComposer;
+import com.eu.habbo.messages.outgoing.guilds.forums.ForumDataMessageComposer;
 import com.eu.habbo.messages.outgoing.handshake.ErrorReportComposer;
 
 public class GuildForumThreadsMessagesEvent extends MessageHandler {
@@ -32,6 +32,6 @@ public class GuildForumThreadsMessagesEvent extends MessageHandler {
             this.client.sendResponse(new GuildForumCommentsComposer(guildId, threadId, index, thread.getComments(limit, index)));
         }
 
-        this.client.sendResponse(new GuildForumDataComposer(guild, this.client.getHabbo()));
+        this.client.sendResponse(new ForumDataMessageComposer(guild, this.client.getHabbo()));
     }
 }
