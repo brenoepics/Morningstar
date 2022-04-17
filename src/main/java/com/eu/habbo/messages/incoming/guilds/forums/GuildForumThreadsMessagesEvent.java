@@ -6,7 +6,7 @@ import com.eu.habbo.habbohotel.guilds.forums.ForumThread;
 import com.eu.habbo.habbohotel.guilds.forums.ForumThreadState;
 import com.eu.habbo.messages.incoming.MessageHandler;
 import com.eu.habbo.messages.outgoing.generic.alerts.NotificationDialogMessageComposer;
-import com.eu.habbo.messages.outgoing.guilds.forums.GuildForumCommentsComposer;
+import com.eu.habbo.messages.outgoing.guilds.forums.ThreadMessagesMessageComposer;
 import com.eu.habbo.messages.outgoing.guilds.forums.ForumDataMessageComposer;
 import com.eu.habbo.messages.outgoing.handshake.ErrorReportComposer;
 
@@ -29,7 +29,7 @@ public class GuildForumThreadsMessagesEvent extends MessageHandler {
         if ((thread.getState() == ForumThreadState.HIDDEN_BY_ADMIN || thread.getState() == ForumThreadState.HIDDEN_BY_STAFF) && guild.getOwnerId() != this.client.getHabbo().getHabboInfo().getId()) {
             this.client.sendResponse(new NotificationDialogMessageComposer("oldforums.error.access_denied"));
         } else {
-            this.client.sendResponse(new GuildForumCommentsComposer(guildId, threadId, index, thread.getComments(limit, index)));
+            this.client.sendResponse(new ThreadMessagesMessageComposer(guildId, threadId, index, thread.getComments(limit, index)));
         }
 
         this.client.sendResponse(new ForumDataMessageComposer(guild, this.client.getHabbo()));
