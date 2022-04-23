@@ -3,6 +3,7 @@
 Arcturus Morningstar is as a fork of Arcturus Emulator by TheGeneral. Arcturus Morningstar is released under the [GNU General Public License v3](https://www.gnu.org/licenses/gpl-3.0.txt) and is developed for free by talented developers at Krews.org and is compatible with the following client revision/community projects:
 
 
+
 | Flash | Community Clients |
 | ------------- | ------------- |
 | [PRODUCTION-201611291003-338511768](https://git.krews.org/morningstar/apollyon/uploads/dc669a26613bf2356e48eb653734ab29/patched-habbo.swf) | [Nitro (Recommended)*](https://git.krews.org/nitro) |
